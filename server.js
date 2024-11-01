@@ -59,6 +59,7 @@ db.connect((err) => {
         res.render('signup');
     });
     
+    // Signup 
     app.post('/signup', async (req, res) => {
         const { username, password } = req.body;
         const hashedPassword = await bcrypt.hash(password, 10);
@@ -68,6 +69,7 @@ db.connect((err) => {
         });
     });
     
+    // Login
     app.post('/login', (req, res) => {
         const { username, password } = req.body;
         db.query('SELECT * FROM users WHERE username = ?', [username], async (err, results) => {
@@ -88,10 +90,12 @@ db.connect((err) => {
     });
 
     //-------------------------------------------------------------------
-    // CRUD Operations
+    
+    // Patients CRUD Operations
 
     app.get('/patients', (req, res) => {
-        db.query('SELECT * FROM patients', (err, results) => {
+        db.query(
+            'SELECT * FROM patients', (err, results) => {
             if (err) throw err;
             res.render('patients', { results: results });
         });
@@ -104,8 +108,10 @@ db.connect((err) => {
     
     //Add Patient
     app.post('/patients', (req, res) => {
-        const { first_name, last_name, date_of_birth, gender, language } = req.body;
-        db.query('INSERT INTO patients (first_name, last_name, date_of_birth, gender, language) VALUES (?, ?, ?, ?, ?)', 
+        const { 
+            first_name, last_name, date_of_birth, gender, language } = req.body;
+        db.query(
+            'INSERT INTO patients (first_name, last_name, date_of_birth, gender, language) VALUES (?, ?, ?, ?, ?)', 
             [first_name, last_name, date_of_birth, gender, language], (err, result) => {
             if (err) throw err;
             res.redirect('/patients');
@@ -116,7 +122,9 @@ db.connect((err) => {
    app.get('/patients/edit/:patient_id', (req, res) => {
     const { patient_id } = req.params;
     
-    db.query('SELECT * FROM patients WHERE patient_id = ?', [patient_id], (err, results) => {
+    db.query(
+        'SELECT * FROM patients WHERE patient_id = ?', 
+        [patient_id], (err, results) => {
         if (err) throw err;
 
         if (results.length > 0) {
@@ -148,8 +156,10 @@ db.connect((err) => {
     //Delete Patient
     app.post('/patients/delete/:patient_id', (req, res) => {
         const { patient_id } = req.params;
-        db.query('DELETE FROM patients WHERE patient_id = ?', [patient_id], (err, result) => {
-            if (err) throw err;
+        db.query(
+            'DELETE FROM patients WHERE patient_id = ?', [patient_id], (err, result) => {
+            
+                if (err) throw err;
             res.redirect('/patients');
         });
     });
@@ -158,63 +168,6 @@ db.connect((err) => {
         req.session.destroy();
         res.redirect('/');
     });
-
-    // //Question 1
-    // //Patients Data
-    // app.get('/patients', (req, res) => {
-    //     db.query('SELECT * FROM patients', (err, results) => {
-    //         if(err){
-    //             console.log(err);
-    //             res.statusMessage(500).send('Error retriving data');
-    //         } else {
-    //             //send the data to browser --- patients is name of view
-    //             res.render('patients', {results: results});
-    //         }
-    //     })
-    // })
-
-    // //Question 2
-    // //Provider Data
-    // app.get('/providers', (req, res) => {
-    //     db.query('SELECT * FROM providers', (err, results) => {
-    //         if(err){
-    //             console.log(err);
-    //             res.statusMessage(500).send('Error retriving data');
-    //         } else {
-    //             //send the data to browser --- patients is name of view
-    //             res.render('providers', {results: results});
-    //         }
-    //     })
-    // })
-
-    // //Question 3
-    // //Patients by first name
-    // app.get('/patientsfilter', (req, res) => {
-    //     db.query('SELECT * FROM patients WHERE first_name = "Mike"', (err, results) => {
-    //         if(err){
-    //             console.log(err);
-    //             res.statusMessage(500).send('Error retriving data');
-    //         } else {
-    //             //send the data to browser --- patients is name of view
-    //             res.render('patientsfilter', {results: results});
-    //         }
-    //     })
-    // })
-
-    // //Question 4
-    // //Providers by speciality
-    // app.get('/providersfilter', (req, res) => {
-    //     db.query('SELECT * FROM providers WHERE provider_specialty = "Surgery"', (err, results) => {
-    //         if(err){
-    //             console.log(err);
-    //             res.statusMessage(500).send('Error retriving data');
-    //         } else {
-    //             //send the data to browser --- patients is name of view
-    //             res.render('providersfilter', {results: results});
-    //         }
-    //     })
-    // })
-
 
     app.listen(process.env.PORT, () => {
         console.log(`Server listening on port ${process.env.PORT}`);
