@@ -10,6 +10,7 @@ const dotenv = require ('dotenv');
 const cors = require ('cors');
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true })); //access form data using req.body
 app.use(cors());
 dotenv.config();
 
@@ -43,6 +44,9 @@ db.connect((err) => {
     app.set('views', __dirname + '/views');
 
     // Routes
+    //-----------------------------------------------------------
+    //Authentication
+
     app.get('/', (req, res) => {
         res.render('index');
     });
@@ -80,6 +84,73 @@ db.connect((err) => {
             } else {
                 res.send('Incorrect Username and/or Password!');
             }
+        });
+    });
+
+    //-------------------------------------------------------------------
+    // CRUD Operations
+
+    app.get('/patients', (req, res) => {
+        db.query('SELECT * FROM patients', (err, results) => {
+            if (err) throw err;
+            res.render('patients', { results: results });
+        });
+    });
+    
+    //Patients
+    app.get('/patients/add', (req, res) => {
+        res.render('addPatient');
+    });
+    
+    //Add Patient
+    app.post('/patients', (req, res) => {
+        const { first_name, last_name, date_of_birth, gender, language } = req.body;
+        db.query('INSERT INTO patients (first_name, last_name, date_of_birth, gender, language) VALUES (?, ?, ?, ?, ?)', 
+            [first_name, last_name, date_of_birth, gender, language], (err, result) => {
+            if (err) throw err;
+            res.redirect('/patients');
+        });
+    });
+    
+   // Route to display the Edit Patient form
+   app.get('/patients/edit/:patient_id', (req, res) => {
+    const { patient_id } = req.params;
+    
+    db.query('SELECT * FROM patients WHERE patient_id = ?', [patient_id], (err, results) => {
+        if (err) throw err;
+
+        if (results.length > 0) {
+            // Pass the specific patient's data to the edit form
+            res.render('editPatient', { patient: results[0]});
+        } else {
+            // Handle case where patient isn't found
+            res.status(404).send("Patient not found");
+        }
+    });
+    });
+
+    // Route to handle updating the patient information
+    app.post('/patients/edit/:patient_id', (req, res) => {
+        const { patient_id } = req.params;
+        const { first_name, last_name, date_of_birth, gender, language } = req.body;
+
+        db.query(
+            'UPDATE patients SET first_name = ?, last_name = ?, date_of_birth = ?, gender = ?, language = ? WHERE patient_id = ?',
+            [first_name, last_name, date_of_birth, gender, language, patient_id],
+            (err, result) => {
+                if (err) throw err;
+                
+                // Redirect to the patient list page or a specific success page
+                res.redirect('/patients');
+        });
+    });
+    
+    //Delete Patient
+    app.post('/patients/delete/:patient_id', (req, res) => {
+        const { patient_id } = req.params;
+        db.query('DELETE FROM patients WHERE patient_id = ?', [patient_id], (err, result) => {
+            if (err) throw err;
+            res.redirect('/patients');
         });
     });
     
