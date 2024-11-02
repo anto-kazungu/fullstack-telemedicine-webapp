@@ -1,0 +1,21 @@
+<!-- views/layout.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sidebar Layout</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Include the Sidebar -->
+        <%- include('partials/sidebar') %>
+
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <%- content %>
+        </div>
+    </div>
+</body>
+</html>

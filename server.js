@@ -30,6 +30,15 @@ const db = mysql.createConnection({
     database: process.env.DB_NAME
 });
 
+// Middleware to check if the user is authenticated
+function isAuthenticated(req, res, next) {
+    if (req.session.loggedin) {
+        next();  // User is authenticated, proceed to the next middleware/route
+    } else {
+        res.redirect('/login');  // If not authenticated, redirect to login
+    }
+}
+
 //check if db connection works
 db.connect((err) => {
     //if there is error
@@ -42,6 +51,10 @@ db.connect((err) => {
     app.use(express.static('public'));
     app.set('view engine', 'ejs');
     app.set('views', __dirname + '/views');
+    app.use((req, res, next) => {
+        res.locals.username = req.session.username;  // Makes username available in all templates
+        next();
+    });
 
     // Routes
     //-----------------------------------------------------------
@@ -49,6 +62,14 @@ db.connect((err) => {
 
     app.get('/', (req, res) => {
         res.render('index');
+    });
+
+    app.get('/main', (req, res) => {
+        res.render('main');
+    });
+
+    app.get('/home', (req, res) => {
+        res.render('home');
     });
     
     app.get('/login', (req, res) => {
@@ -58,6 +79,8 @@ db.connect((err) => {
     app.get('/signup', (req, res) => {
         res.render('signup');
     });
+
+
     
     // Signup 
     app.post('/signup', async (req, res) => {
@@ -79,7 +102,7 @@ db.connect((err) => {
                 if (comparison) {
                     req.session.loggedin = true;
                     req.session.username = username;
-                    res.redirect('/');
+                    res.redirect('/home');
                 } else {
                     res.send('Incorrect Username and/or Password!');
                 }
@@ -93,7 +116,7 @@ db.connect((err) => {
     
     // Patients CRUD Operations
 
-    app.get('/patients', (req, res) => {
+    app.get('/patients', isAuthenticated, (req, res) => {
         db.query(
             'SELECT * FROM patients', (err, results) => {
             if (err) throw err;
@@ -107,7 +130,7 @@ db.connect((err) => {
     });
     
     //Add Patient
-    app.post('/patients', (req, res) => {
+    app.post('/patients', isAuthenticated, (req, res) => {
         const { 
             first_name, last_name, date_of_birth, gender, language } = req.body;
         db.query(

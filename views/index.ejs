@@ -3,19 +3,118 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
+        <title>E-Medtrics</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="/css/homepage.css">
     </head>
     <body>
-        <h1>Welcome</h1>
-        <% if (typeof loggedin !== 'undefined' && loggedin) { %>
-            <p>Hello, <%= username %>! <a href="/logout">Logout</a></p>
-        <% } else { %>
-            <p><a href="/login">Login</a> or <a href="/signup">Sign Up</a></p>
-        <% } %>
+        <!-- Navigation Bar -->
+        <header>
+        <a class="logo"><img src="/Assets/emedtricslogo.png" alt="emedtricslogo"></a>
+        <nav id="nav-content">
+            <ul class="nav-links">
+                <% if (typeof loggedin !== 'undefined' && loggedin) { %>
+                    <p>Hello, <%= username %>! <a href="/auth/logout">Logout</a></p>
+                <% } else { %>
+                    <p><a href="/login">Login</a> or <a href="/auth/signup">Sign Up</a></p>
+                <% } %>
+            </ul>
+        </nav>
+        </header>
         
-        <script src="" async defer></script>
+        <!-- Main Content -->
+         <main class="grid-container" id="top-page">
+            <!-- hero image -->
+            <div class="row">
+                <div class="col hero-img">
+                    <img src="/Assets/Doctors-pana.svg" alt="">
+                    <!-- <a href="https://storyset.com/work">Work illustrations by Storyset</a> -->
+                </div>   
+            </div>
+            <!-- hero text -->
+            <div class="row">
+                <div class="card col hero-text">
+                    <p>Quality Heathcare at Your Fingertips - Your Wellness, Our Priority.</p>
+                </div>  
+            </div>
+            <hr style="color: white;">
+            <!-- About Us -->
+            <h1 class="section-heading text-left" id="about-page">Who Are We?</h1>
+            <div class="about-content row">
+                <div class="col about-img">
+                    <img id="about-img" src="/Assets/emedtricslogo.png" alt="">
+                </div>
+                <div class="card col about-text">
+                    <p>At E-Medtrics, we make quality healthcare accessible and affordable for eveyone.
+                        Our platform connects you with trusted medical proffessionals and personalized care,
+                        offering innovative health solutions right at your fingertips. Whether for
+                        care, managing conditions, or expert advice, we are dedicated to supporting your
+                        well-being with compassion and expertise.
+                    </p>
+                </div>  
+            </div>
+            <hr style="color: white;">
+            <!-- Services -->
+            <h1 class="section-heading" id="service-page">What Do We Do?</h1>
+            <div class="sevices row" id="service-page">
+                <div class="service-info col">
+                    <img src="/Assets/first-aid-kit-doctor-svgrepo-com.svg" alt="">
+                    <p>Emergency Response</p>
+                </div>
+
+                <div class="service-info col">
+                    <img src="/Assets/medicine-pill-svgrepo-com.svg" alt="">
+                    <p>Pharmaceuticals</p>
+                </div>
+
+                <div class="service-info col">
+                    <img src="/Assets/stethoscope-doctor-svgrepo-com.svg" alt="">
+                    <p>Medical Care</p>
+                </div>
+            </div>
+            <!-- CTA -->
+            <h1 class="section-heading text-left">Take Charge of Your Health Now!!</h1>
+            <div class="cta-container">
+                <div class="cta-box">
+                    <div class="cta-section row">
+                        <div class="cta-text col">
+                            <p>Ready to Get Started?</p>
+                        </div>
+                        <div class="cta-btn col">
+                            <a href=""><button id="cta-contact-btn">Contact Us</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </main>
+
+        <!-- Footer -->
+         <footer>
+            <div class="footer-content">
+                <div class="contact-section row">
+                    <div class="footer-info col text-r">
+                        <h1 class="footer-header">E-Medtrics Nairobi</h1>
+                        <p>Tom Mboya Street, Bizz Tower</p>
+                    </div>
+
+                    <div class="footer-info col">
+                        <h1 class="footer-header">Contacts</h1>
+                        <p>Direct: 0400000456, 01010000</p>
+                    </div>
+
+                    <div class="footer-info col">
+                        <h1 class="footer-header">Socials</h1>
+                        <p>-- Coming Soon, Please Be Patient--</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="copyright-section col">
+                        <p>Copyright@2024, E-Medtrics Health.</p>
+                    </div>
+                </div>
+            </div>
+         </footer>
+        
     </body>
 </html>

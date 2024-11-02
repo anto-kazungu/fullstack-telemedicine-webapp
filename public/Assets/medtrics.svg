@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="210mm"
+   viewBox="0 0 210 210"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.3.1 (9b9bdc1480, 2023-11-25, custom)"
+   sodipodi:docname="medtrics.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#cccccc"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="1"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="mm"
+     showguides="true"
+     inkscape:zoom="0.55048947"
+     inkscape:cx="356.95506"
+     inkscape:cy="409.63545"
+     inkscape:window-width="1366"
+     inkscape:window-height="704"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showgrid="false">
+    <sodipodi:guide
+       position="132.26061,136.42812"
+       orientation="0,-1"
+       id="guide2"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="94.072071,157.44434"
+       orientation="1,0"
+       id="guide3"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="119.06092,152.99543"
+       orientation="0,-1"
+       id="guide5"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="121.37528,139.36643"
+       orientation="1,0"
+       id="guide6"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="150.17619,119.5658"
+       orientation="1,0"
+       id="guide7"
+       inkscape:locked="false" />
+    <sodipodi:guide
+       position="138.86155,182.5678"
+       orientation="0,-1"
+       id="guide8"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g8"
+       transform="matrix(2.136306,0,0,2.136306,-121.23901,-234.22727)">
+      <path
+         id="rect1"
+         style="fill:#ff0000;stroke:none;stroke-width:0.1"
+         d="m 105.3415,114.36523 c -6.354415,0 -11.470097,5.11568 -11.470097,11.4701 v 22.46271 H 71.164261 c -6.354418,0 -11.4701,5.11568 -11.4701,11.4701 0,6.35442 5.115682,11.4701 11.4701,11.4701 h 22.707142 v 22.18521 c 0,6.35442 5.115682,11.4701 11.470097,11.4701 6.35442,0 11.4701,-5.11568 11.4701,-11.4701 v -22.18521 h 21.94027 c 6.35442,0 11.4701,-5.11568 11.4701,-11.4701 0,-6.35442 -5.11568,-11.4701 -11.4701,-11.4701 H 116.8116 v -22.46271 c 0,-6.35442 -5.11568,-11.4701 -11.4701,-11.4701 z" />
+      <rect
+         style="fill:#ff6600;stroke:none;stroke-width:0.1"
+         id="rect3"
+         width="18.718304"
+         height="18.076307"
+         x="121.10449"
+         y="125.79858"
+         ry="4.4860525" />
+      <rect
+         style="fill:#ffaaaa;stroke:none;stroke-width:0.0636803"
+         id="rect3-2"
+         width="11.919867"
+         height="11.511042"
+         x="141.09564"
+         y="112.85485"
+         ry="3.1703551" />
+    </g>
+  </g>
+</svg>

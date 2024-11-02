@@ -9,35 +9,41 @@
         <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
-        <h1>Patients</h1>
-        <a href="/patients/add">Add New Patient</a>
-        <table border="1">
-            <tr>
-                <th>Patient ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Date Of Birth</th>
-                <th>Gender</th>
-                <th>Langu8age</th>
-            </tr>
-
-            <% results.forEach(patient => { %>
+        <!-- Wrap the content -->
+    <% 
+        content = `
+            <h1>Patients</h1>
+            <a href="/patients/add">Add New Patient</a>
+            <table border="1">
                 <tr>
-                    <td><%= patient.patient_id %></td>
-                    <td><%= patient.first_name %></td>
-                    <td><%= patient.last_name %></td>
-                    <td><%= patient.date_of_birth %></td>
-                    <td><%= patient.gender %></td>
-                    <td><%= patient.language %></td>
-
-                    <td>
-                        <a href="/patients/edit/<%= patient.patient_id %>">Edit</a>
-                        <form action="/patients/delete/<%= patient.patient_id %>" method="POST" style="display:inline;">
-                            <button type="submit">Delete</button>
-                        </form>
-                    </td>
+                    <th>Patient ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Date Of Birth</th>
+                    <th>Gender</th>
+                    <th>Language</th>
                 </tr>
-            <% }) %>
-        </table>
+    
+                ${results.map(patient => `
+                    <tr>
+                        <td>${patient.patient_id}</td>
+                        <td>${patient.first_name}</td>
+                        <td>${patient.last_name}</td>
+                        <td>${patient.date_of_birth}</td>
+                        <td>${patient.gender}</td>
+                        <td>${patient.language}</td>
+                        <td>
+                            <a href="/patients/edit/${patient.patient_id}">Edit</a>
+                            <form action="/patients/delete/${patient.patient_id}" method="POST" style="display:inline;">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                `).join('')}
+            </table>
+        `;
+    %>
+    <!-- Pass content to layout -->
+    <%- include('layout') %>
     </body>
 </html>
