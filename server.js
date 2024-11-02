@@ -73,11 +73,11 @@ db.connect((err) => {
     });
     
     app.get('/login', (req, res) => {
-        res.render('login');
+        res.render('auth/login');
     });
     
     app.get('/signup', (req, res) => {
-        res.render('signup');
+        res.render('auth/signup');
     });
 
 
@@ -88,7 +88,7 @@ db.connect((err) => {
         const hashedPassword = await bcrypt.hash(password, 10);
         db.query('INSERT INTO users (username, password) VALUES (?, ?)', [username, hashedPassword], (err, result) => {
             if (err) throw err;
-            res.redirect('/login');
+            res.redirect('auth/login');
         });
     });
     
@@ -114,19 +114,20 @@ db.connect((err) => {
 
     //-------------------------------------------------------------------
     
+    //-------------------------------------------------------------------
     // Patients CRUD Operations
 
     app.get('/patients', isAuthenticated, (req, res) => {
         db.query(
             'SELECT * FROM patients', (err, results) => {
             if (err) throw err;
-            res.render('patients', { results: results });
+            res.render('patients/patients', { results: results });
         });
     });
     
     //Patients
     app.get('/patients/add', (req, res) => {
-        res.render('addPatient');
+        res.render('patients/addPatient');
     });
     
     //Add Patient
@@ -137,7 +138,7 @@ db.connect((err) => {
             'INSERT INTO patients (first_name, last_name, date_of_birth, gender, language) VALUES (?, ?, ?, ?, ?)', 
             [first_name, last_name, date_of_birth, gender, language], (err, result) => {
             if (err) throw err;
-            res.redirect('/patients');
+            res.redirect('patients/patients');
         });
     });
     
@@ -152,7 +153,7 @@ db.connect((err) => {
 
         if (results.length > 0) {
             // Pass the specific patient's data to the edit form
-            res.render('editPatient', { patient: results[0]});
+            res.render('patients/editPatient', { patient: results[0]});
         } else {
             // Handle case where patient isn't found
             res.status(404).send("Patient not found");
@@ -172,7 +173,7 @@ db.connect((err) => {
                 if (err) throw err;
                 
                 // Redirect to the patient list page or a specific success page
-                res.redirect('/patients');
+                res.redirect('patients/patients');
         });
     });
     
@@ -183,9 +184,92 @@ db.connect((err) => {
             'DELETE FROM patients WHERE patient_id = ?', [patient_id], (err, result) => {
             
                 if (err) throw err;
-            res.redirect('/patients');
+            res.redirect('patients/patients');
         });
     });
+
+    //-----------------------------------------------------------------------------
+    // Providers CRUD Operations
+
+    app.get('/providers', isAuthenticated, (req, res) => {
+        db.query(
+            'SELECT * FROM providers', (err, results) => {
+            if (err) throw err;
+            res.render('providers/providers', { results: results });
+        });
+    });
+    
+    //Providers
+    app.get('/providers/add', (req, res) => {
+        res.render('providers/addProvider');
+    });
+    
+    //Add Provider
+    app.post('/providers', isAuthenticated, (req, res) => {
+        const { 
+            first_name, last_name, provider_specialty, email_address, phone_number, date_joined } = req.body;
+        db.query(
+            'INSERT INTO prviders (first_name, last_name, provider_specialty, email_address, phone_number, date_joined) VALUES (?, ?, ?, ?, ?, ?)', 
+            [first_name, last_name, provider_specialty, email_address, phone_number, date_joined], (err, result) => {
+            if (err) throw err;
+            res.redirect('providers/providers');
+        });
+    });
+    
+   // Route to display the Edit Provider form
+   app.get('/providers/edit/:provider_id', (req, res) => {
+    const { provider_id } = req.params;
+    
+    db.query(
+        'SELECT * FROM providers WHERE patient_id = ?', 
+        [provider_id], (err, results) => {
+        if (err) throw err;
+
+        if (results.length > 0) {
+            // Pass the specific provider's data to the edit form
+            res.render('editProvider', { provider: results[0]});
+        } else {
+            // Handle case where pprovider isn't found
+            res.status(404).send("Provider not found");
+        }
+    });
+    });
+
+    // Route to handle updating the proovider information
+    app.post('/provider/edit/:provider_id', (req, res) => {
+        const { provider_id } = req.params;
+        const { first_name, last_name, provider_specialty, email_address, phone_number, date_joined } = req.body;
+
+        db.query(
+            'UPDATE patients SET first_name = ?, last_name = ?, provider_specialty = ?, email_address = ?, phone_number = ?, date_joined = ? WHERE patient_id = ?',
+            [first_name, last_name, provider_specialty, email_address, phone_number, date_joined, provider_id],
+            (err, result) => {
+                if (err) throw err;
+                
+                // Redirect to the providers list page or a specific success page
+                res.redirect('providers/providers');
+        });
+    });
+    
+    //Delete Provider
+    app.post('/providers/delete/:provider_id', (req, res) => {
+        const { provider_id } = req.params;
+        db.query(
+            'DELETE FROM providers WHERE provider_id = ?', [provider_id], (err, result) => {
+            
+                if (err) throw err;
+            res.redirect('providers/providers');
+        });
+    });
+
+    //-----------------------------------------------------------------------------
+    // Visits CRUD Operations
+
+    //-----------------------------------------------------------------------------
+    //Edvisits  CRUD Operations
+
+    //-----------------------------------------------------------------------------
+    // Discharges CRUD Operations
     
     app.get('/logout', (req, res) => {
         req.session.destroy();

@@ -6,24 +6,32 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="/css/forms.css">
     </head>
     <body>
-        <h1>Login</h1>
-        <form action="/login" method="post">
-            <div>
-                <label for="username">Username:</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div>
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <div>
-                <button type="submit">Login</button>
-            </div>
-        </form>
+        <div class="form-content">
+            <h1>Login</h1>
+
+            <form action="/login" method="post">
+                <div class="form-input">
+                    <label for="username">Username:</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+
+                <div class="form-input">
+                    <label for="password">Password:</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+
+                <div class="submit-btn">
+                    <button type="submit" class="next action-button">Login</button>
+                </div>
+            </form>
+
+        </div>
+        
         
         <script src="" async defer></script>
     </body>
 </html>
+

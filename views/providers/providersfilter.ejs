@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>date_of_birth</th
+                </tr>
+            </thead>
+            <tbody>
+                <% results.forEach(row => { %>
+                    <tr>
+                        <td><%= row.patient_id %></td>
+                        <td><%= row.first_name %></td>
+                        <td><%= row.last_name %></td>
+                        <td><%= row.date_of_birth %></td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </body>
+</html>

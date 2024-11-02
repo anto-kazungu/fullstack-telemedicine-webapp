@@ -1,0 +1,93 @@
+html {
+    height: 100%;
+  }
+  
+  .form-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    padding: 40px;
+    transform: translate(-50%, -50%);
+    background: rgba(0,0,0,.5);
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0,0,0,.6);
+    border-radius: 10px;
+  }
+  
+  .form-content h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+  }
+  
+  .form-content .form-input {
+    position: relative;
+  }
+  
+  .form-content .form-input input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1px solid #fff;
+    outline: none;
+    background: transparent;
+  }
+  .form-content .form-input label {
+    position: absolute;
+    top:0;
+    left: 0;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #fff;
+    pointer-events: none;
+    transition: .5s;
+  }
+  
+  .form-content .form-input input:focus ~ label,
+  .form-content .form-input input:valid ~ label {
+    top: -20px;
+    left: 0;
+    color: #03e9f4;
+    font-size: 12px;
+  }
+  
+  .form-content form a {
+    position: relative;
+    display: inline-block;
+    padding: 10px 20px;
+    color: #03e9f4;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 4px
+  }
+
+  .submit-btn{
+    text-align: center;
+  }
+
+  .form-content .action-button {
+    width: 100px;
+    background: #ffffff;
+    font-weight: bold;
+    color: rgb(31, 30, 30);
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+  }
+  .form-content .action-button:hover, .form-content .action-button:focus {
+    box-shadow: 0 0 0 2px white, 0 0 0 3px #d5d5d5;
+  }

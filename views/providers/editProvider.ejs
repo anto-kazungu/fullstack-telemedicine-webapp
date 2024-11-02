@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Patient</title>
+</head>
+<body>
+    <h1>Edit Patient</h1>
+    <form action="/providers/edit/<%= provider.provider_id %>" method="POST">
+        <label for="first_name">First Name:</label>
+        <input type="text" name="first_name" value="<%= provider.first_name %>" required><br>
+        
+        <label for="last_name">Last Name:</label>
+        <input type="text" name="last_name" value="<%= provider.last_name %>" required><br>
+        
+        <label for="provider_specialty">Provider Specialty:</label>
+        <input type="text" name="provider_specialty" value="<%= prvider.provider_specialty %>" required><br>
+
+        <label for="email_address">Email Address:</label>
+        <input type="text" name="email_address" value="<%= provider.email_address %>" required><br>
+
+        <label for="phone_number">Phone Number:</label>
+        <input type="text" name="phone_number" value="<%= provider.phone_number %>" required><br>
+
+        <label for="date_joined">Date Joined:</label>
+        <input type="date" name="date_joined" value="<%= provider.date_joined %>" required><br>
+        
+        <button type="submit">Update Patient</button>
+    </form>
+</body>
+</html>
