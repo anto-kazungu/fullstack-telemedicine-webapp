@@ -65,7 +65,7 @@ A data management solution designed for small to mid-sized clinics to streamline
 
 1. **Start the Application**:
     ```bash
-    npm start
+    nodemon server.js
     ```
 
 2. **Access the Application**:
