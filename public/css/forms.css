@@ -1,6 +1,9 @@
 html {
     height: 100%;
+    background-color: black;
   }
+
+  /* Login and Signup form */
   
   .form-content {
     position: absolute;
@@ -89,5 +92,53 @@ html {
     font-size: 14px;
   }
   .form-content .action-button:hover, .form-content .action-button:focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 3px #d5d5d5;
+    box-shadow: 0 0 0 2px rgb(255, 0, 0), 0 0 0 3px #ff0000;
+  }
+
+  /* Update data form */
+  .form-row {
+    padding: 50px ;
+    max-width: 300px;
+    margin: 100px auto;
+    background:white;
+    background:rgba(255,255,255,0.9);
+    backdrop-filter:blur(10px);
+    box-shadow:0px 2px 10px rgba(0,0,0,0.3);
+    border-radius:5px;
+    transition:transform 0.2s ease-in-out;
+  }
+  
+  .input-data input, select{
+    width: 100%;
+    margin: 7px 0px;
+    display: inline-block;
+    padding: 12px 25px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    font-size: 1em;
+    font-family:inherit;
+    background:white;
+  }
+  .input-data select>option {
+    padding-right: 20px;
+  }
+
+  label {
+    color: gray;
+  }
+
+  .update-btn {
+    background: rgb(87, 99, 87);
+    border-radius: 5px;
+    padding: 15px 25px;
+    display: inline-block;
+    margin: 10px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+  }
+
+  .update-btn:hover, .update-btn:focus {
+    box-shadow: 0 0 0 2px rgb(30, 192, 5), 0 0 0 3px #1fc605;
   }

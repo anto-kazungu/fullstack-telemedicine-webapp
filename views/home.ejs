@@ -1,23 +1,91 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="/css/styles.css">
-    </head>
-    <body>
-        <h1>Welcome</h1>
-        
-        <% content = `
-        <h1>Welcome to the Home Page</h1>
-        <p>This is the main content area.</p>
-        ` %>
-        <%- include('layout') %>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/cards.css">
+</head>
+<body>
 
-        
-        <script src="" async defer></script>
-    </body>
+<% 
+    content = `
+        <h1>Welcome to E-Medtrics</h1>
+            <hr>
+
+            <div class="row w-row">
+
+                <div class="basic-column w-col w-col-3">
+                    <div class="tag-wrapper">
+                        <div class="number-card number-card-content1">
+                            <h1 class="number-card-number">${totalPatients}</h1>
+                            <div class="number-card-divider"></div>
+                            <div class="number-card-progress-wrapper">
+                                <div class="tagline number-card-currency">PATIENTS</div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+
+                <div class="basic-column w-col w-col-3">
+                    <div class="tag-wrapper">
+                        <div class="number-card number-card-content2">
+                            <h1 class="number-card-number">${totalProviders}</h1>
+                            <div class="number-card-divider"></div>
+                            <div class="number-card-progress-wrapper">
+                                <div class="tagline number-card-currency">PROVIDERS</div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+
+                <div class="basic-column w-col w-col-3">
+                    <div class="tag-wrapper">
+                        <div class="number-card number-card-content5">
+                            <h1 class="number-card-number">0</h1>
+                            <div class="number-card-divider"></div>
+                            <div class="number-card-progress-wrapper">
+                                <div class="tagline number-card-currency">VISITS</div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+
+                <div class="basic-column w-col w-col-3">
+                    <div class="tag-wrapper">
+                        <div class="number-card number-card-content3">
+                            <h1 class="number-card-number">0</h1>
+                            <div class="number-card-divider"></div>
+                            <div class="number-card-progress-wrapper">
+                                <div class="tagline number-card-currency">Emergency VISITS</div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+
+                <div class="basic-column w-col w-col-3">
+                    <div class="tag-wrapper">
+                        <div class="number-card number-card-content4">
+                            <h1 class="number-card-number">0</h1>
+                            <div class="number-card-divider"></div>
+                            <div class="number-card-progress-wrapper">
+                                <div class="tagline number-card-currency">DISCHARGES</div>
+                            </div>
+                        </div>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+
+            </div>
+    `;
+%>
+<!-- Pass content to layout -->
+<%- include('layout') %>
+</body>
 </html>

@@ -1,5 +1,10 @@
 /* Layout Styles */
 /* public/style.css */
+*{
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+}
 
 body, html {
     margin: 0;
@@ -12,7 +17,7 @@ body, html {
 }
 
 .sidebar {
-    width: 200px;
+    width: 250px;
     background-color: #000000;
     color: #fff;
     padding: 20px;
@@ -93,3 +98,47 @@ table {
     border-radius: 5px;
     overflow: hidden;
 }
+
+.delete-btn, .edit-btn {
+    width: 100px;
+    background: #ffffff;
+    font-weight: bold;
+    color: rgb(55, 51, 51);
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 10px 5px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .add-btn {
+    width: 200px;
+    background: #00ff0d;
+    font-weight: bold;
+    font-weight: bold;
+    border: 0 none;
+    border-radius: 1px;
+    cursor: pointer;
+    padding: 10px;
+    margin: 50px 5px;
+    text-align: center;
+    font-size: 14px;
+  }
+
+  .add-btn a{
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+  }
+
+  .edit-btn:hover, .edit-btn:focus ,.add-btn:hover, .add-btn:focus{
+    background-color: #03c236;
+    color: #ffffff;
+  }
+
+  .delete-btn:hover, .delete-btn:focus {
+    background-color: #ff0000;
+    color: #ffffff;
+  }

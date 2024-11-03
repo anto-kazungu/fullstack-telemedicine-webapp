@@ -6,31 +6,43 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link rel="stylesheet" href="/css/forms.css">
     </head>
     <body>
-        <h1>Add New Patient</h1>
-        <form action="/patients" method="POST">
-            <label for="first_name">First Name:</label>
-            <input type="text" name="first_name" required><br>
+        <div class="form-row">
+            <h1>Add New Patient</h1>
+            <form action="/patients" method="POST">
 
-            <label for="Last_name">Last Name:</label>
-            <input type="text" name="last_name" required><br>
-            
-            <label for="date_of_birth">Date Of Birth:</label>
-            <input type="date" name="date_of_birth" required><br>
-            
-            <label for="gender">Gender:</label>
-            <select name="gender" required>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-            </select><br>
+                <div class="input-data">
+                    <input type="text" name="first_name" required placeholder="First Name"><br>
+                </div>
 
-            <label for="language">Language:</label>
-            <input type="text" name="language" required><br>
-            
-            <button type="submit">Add Patient</button>
-        </form>
+                <div class="input-data">
+                    <input type="text" name="last_name" required placeholder="Last Name"><br>
+                </div>
+                
+                <div class="input-data">
+                    <input type="date" name="date_of_birth" required placeholder="Date Of Birth"><br>
+                </div>
+                
+                <div class="input-data">
+                    <label for="gender">Gender</label>
+                    <select name="gender" required>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select><br>
+                </div>
+
+                <div class="input-data">
+                    <input type="text" name="language" required placeholder="Language"><br>
+                </div>
+                
+                <div class="submit-btn">
+                    <button type="submit" class="update-btn">Add Patient</button>
+                </div>
+                
+            </form>
+        </div>
         
         <script src="" async defer></script>
     </body>

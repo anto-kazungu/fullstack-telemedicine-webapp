@@ -15,9 +15,9 @@
         <nav id="nav-content">
             <ul class="nav-links">
                 <% if (typeof loggedin !== 'undefined' && loggedin) { %>
-                    <p>Hello, <%= username %>! <a href="/auth/logout">Logout</a></p>
+                    <p>Hello, <%= username %>! <a href="/logout">Logout</a></p>
                 <% } else { %>
-                    <p><a href="/login">Login</a> or <a href="/auth/signup">Sign Up</a></p>
+                    <p><a href="../login">Login</a> or <a href="../signup">Sign Up</a></p>
                 <% } %>
             </ul>
         </nav>

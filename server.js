@@ -69,18 +69,30 @@ db.connect((err) => {
     });
 
     app.get('/home', (req, res) => {
-        res.render('home');
+        // Query to get counts for both patients and providers
+        const query = `
+            SELECT 
+                (SELECT COUNT(*) FROM patients) AS totalPatients,
+                (SELECT COUNT(*) FROM providers) AS totalProviders;
+        `;
+        
+        db.query(query, (err, results) => {
+            if (err) throw err;
+    
+            const totalPatients = results[0].totalPatients;
+            const totalProviders = results[0].totalProviders;
+    
+            res.render('home', { totalPatients: totalPatients, totalProviders: totalProviders });
+        });
     });
     
     app.get('/login', (req, res) => {
         res.render('auth/login');
     });
-    
+
     app.get('/signup', (req, res) => {
         res.render('auth/signup');
     });
-
-
     
     // Signup 
     app.post('/signup', async (req, res) => {
@@ -138,7 +150,7 @@ db.connect((err) => {
             'INSERT INTO patients (first_name, last_name, date_of_birth, gender, language) VALUES (?, ?, ?, ?, ?)', 
             [first_name, last_name, date_of_birth, gender, language], (err, result) => {
             if (err) throw err;
-            res.redirect('patients/patients');
+            res.redirect('/patients');
         });
     });
     
@@ -173,7 +185,7 @@ db.connect((err) => {
                 if (err) throw err;
                 
                 // Redirect to the patient list page or a specific success page
-                res.redirect('patients/patients');
+                res.redirect('/patients');
         });
     });
     
@@ -184,7 +196,7 @@ db.connect((err) => {
             'DELETE FROM patients WHERE patient_id = ?', [patient_id], (err, result) => {
             
                 if (err) throw err;
-            res.redirect('patients/patients');
+            res.redirect('/patients');
         });
     });
 
@@ -212,7 +224,7 @@ db.connect((err) => {
             'INSERT INTO prviders (first_name, last_name, provider_specialty, email_address, phone_number, date_joined) VALUES (?, ?, ?, ?, ?, ?)', 
             [first_name, last_name, provider_specialty, email_address, phone_number, date_joined], (err, result) => {
             if (err) throw err;
-            res.redirect('providers/providers');
+            res.redirect('/providers');
         });
     });
     
@@ -227,7 +239,7 @@ db.connect((err) => {
 
         if (results.length > 0) {
             // Pass the specific provider's data to the edit form
-            res.render('editProvider', { provider: results[0]});
+            res.render('/editProvider', { provider: results[0]});
         } else {
             // Handle case where pprovider isn't found
             res.status(404).send("Provider not found");
@@ -247,7 +259,7 @@ db.connect((err) => {
                 if (err) throw err;
                 
                 // Redirect to the providers list page or a specific success page
-                res.redirect('providers/providers');
+                res.redirect('/providers');
         });
     });
     
@@ -258,7 +270,7 @@ db.connect((err) => {
             'DELETE FROM providers WHERE provider_id = ?', [provider_id], (err, result) => {
             
                 if (err) throw err;
-            res.redirect('providers/providers');
+            res.redirect('/providers');
         });
     });
 

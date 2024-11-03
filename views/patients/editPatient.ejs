@@ -4,26 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Patient</title>
+    <link rel="stylesheet" href="/css/forms.css">
 </head>
 <body>
-    <h1>Edit Patient</h1>
-    <form action="/patients/edit/<%= patient.patient_id %>" method="POST">
-        <label for="first_name">First Name:</label>
-        <input type="text" name="first_name" value="<%= patient.first_name %>" required><br>
-        
-        <label for="last_name">Last Name:</label>
-        <input type="text" name="last_name" value="<%= patient.last_name %>" required><br>
-        
-        <label for="date_of_birth">Date of Birth:</label>
-        <input type="date" name="date_of_birth" value="<%= patient.date_of_birth %>" required><br>
+    <div class="form-row">
+        <h1>Edit Patient</h1>
+        <form action="/patients/edit/<%= patient.patient_id %>" method="POST">
 
-        <label for="gender">Gender:</label>
-        <input type="text" name="gender" value="<%= patient.gender %>" required><br>
+            <div class="input-data">
+                <input type="text" name="first_name" value="<%= patient.first_name %>" placeholder="First Name" required><br>
+            </div>
+            
+            <div class="input-data">
+                <input type="text" name="last_name" value="<%= patient.last_name %>" placeholder="Last Name" required><br>
+            </div>
+            
+            <div class="input-data">
+                <input type="date" name="date_of_birth" value="<%= patient.date_of_birth %>" required placeholder="Date of Birth"><br>
+            </div>
+            
+            <div class="input-data">
+                <input type="text" name="gender" value="<%= patient.gender %>" required placeholder="Gender"><br>
+            </div>
+            
+            <div class="input-data">
+                <input type="text" name="language" value="<%= patient.language %>" required placeholder="Language"><br>
+            </div>
+            
+            <div class="submit-btn">
+                <button type="submit" class="update-btn">Update Patient</button>
+            </div>
+            
+        </form>
 
-        <label for="language">Language:</label>
-        <input type="text" name="language" value="<%= patient.language %>" required><br>
-        
-        <button type="submit">Update Patient</button>
-    </form>
+    </div>
 </body>
 </html>
