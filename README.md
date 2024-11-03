@@ -34,8 +34,10 @@ A data management solution designed for small to mid-sized clinics to streamline
 
 1. **Clone the Repository**:
     ```bash
-    git clone https://github.com/your-username/clinic-data-management.git
-    cd clinic-data-management
+    git clone https://github.com/anto-kazungu/fullstack-telemedicine-webapp
+    ```
+    ```bash
+    cd fullstack-telemedicine-webapp
     ```
 
 2. **Install Dependencies**:
