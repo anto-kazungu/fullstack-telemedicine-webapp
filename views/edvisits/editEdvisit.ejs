@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit ED Visit</title>
+</head>
+<body>
+    <h1>Edit ED Visit</h1>
+    <form action="/edvisits/edit/<%= edvisit.ed_visit_id %>" method="POST">
+        <label for="visit_id">Visit ID:</label>
+        <input type="text" name="visit_id" value="<%= edvisit.visit_id %>" required><br>
+        
+        <label for="patient_id">Patient ID:</label>
+        <input type="text" name="patient_id" value="<%= edvisit.patient_id %>" required><br>
+        
+        <label for="acuity">Acuity:</label>
+        <input type="text" name="acuity" value="<%= edvisit.acuity %>" required><br>
+
+        <label for="reason_for_visit">Reason for Visit:</label>
+        <input type="text" name="reason_for_visit" value="<%= edvisit.reason_for_visit %>" required><br>
+
+        <label for="ed_disposition">ED Disposition:</label>
+        <input type="text" name="ed_disposition" value="<%= edvisit.ed_disposition %>" required><br>
+        
+        <button type="submit">Update ED Visit</button>
+    </form>
+</body>
+</html>

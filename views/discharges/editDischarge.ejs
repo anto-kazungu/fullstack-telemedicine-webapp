@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Discharge</title>
+</head>
+<body>
+    <h1>Edit Discharge</h1>
+    <form action="/discharges/edit/<%= discharge.discharges_id %>" method="POST">
+        <label for="admission_id">Admission ID:</label>
+        <input type="text" name="admission_id" value="<%= discharge.admission_id %>" required><br>
+        
+        <label for="patient_id">Patient ID:</label>
+        <input type="text" name="patient_id" value="<%= discharge.patient_id %>" required><br>
+        
+        <label for="discharge_date">Discharge Date:</label>
+        <input type="date" name="discharge_date" value="<%= discharge.discharge_date %>" required><br>
+
+        <label for="discharge_disposition">Discharge Disposition:</label>
+        <input type="text" name="discharge_disposition" value="<%= discharge.discharge_disposition %>" required><br>
+        
+        <button type="submit">Update Discharge</button>
+    </form>
+</body>
+</html>

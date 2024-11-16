@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Visit</title>
+</head>
+<body>
+    <h1>Edit Visit</h1>
+    <form action="/visits/edit/<%= visit.visit_id %>" method="POST">
+        <label for="patient_id">Patient ID:</label>
+        <input type="text" name="patient_id" value="<%= visit.patient_id %>" required><br>
+
+        <label for="provider_id">Provider ID:</label>
+        <input type="text" name="provider_id" value="<%= visit.provider_id %>" required><br>
+
+        <label for="date_of_visit">Date of Visit:</label>
+        <input type="date" name="date_of_visit" value="<%= visit.date_of_visit %>" required><br>
+
+        <label for="date_scheduled">Date Scheduled:</label>
+        <input type="date" name="date_scheduled" value="<%= visit.date_scheduled %>" required><br>
+
+        <label for="visit_department_id">Visit Department ID:</label>
+        <input type="text" name="visit_department_id" value="<%= visit.visit_department_id %>" required><br>
+
+        <label for="visit_type">Visit Type:</label>
+        <input type="text" name="visit_type" value="<%= visit.visit_type %>" required><br>
+
+        <label for="blood_pressure_systolic">Blood Pressure (Systolic):</label>
+        <input type="text" name="blood_pressure_systolic" value="<%= visit.blood_pressure_systolic %>" required><br>
+
+        <label for="blood_pressure_diastolic">Blood Pressure (Diastolic):</label>
+        <input type="text" name="blood_pressure_diastolic" value="<%= visit.blood_pressure_diastolic %>" required><br>
+
+        <label for="pulse">Pulse:</label>
+        <input type="text" name="pulse" value="<%= visit.pulse %>" required><br>
+
+        <label for="visit_status">Visit Status:</label>
+        <input type="text" name="visit_status" value="<%= visit.visit_status %>" required><br>
+        
+        <button type="submit">Update Visit</button>
+    </form>
+</body>
+</html>

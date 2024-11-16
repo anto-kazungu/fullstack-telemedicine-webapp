@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Add Discharge</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/forms.css">
+    </head>
+    <body>
+        <div class="form-row">
+            <h1>Add New Discharge</h1>
+            <form action="/discharges" method="POST">
+
+                <div class="input-data">
+                    <input type="text" name="admission_id" required placeholder="Admission ID"><br>
+                </div>
+
+                <div class="input-data">
+                    <input type="text" name="patient_id" required placeholder="Patient ID"><br>
+                </div>
+
+                <div class="input-data">
+                    <label for="discharge_date">Discharge Date:</label>
+                    <input type="date" name="discharge_date" required><br>
+                </div>
+                
+                <div class="input-data">
+                    <input type="text" name="discharge_disposition" required placeholder="Discharge Disposition"><br>
+                </div>
+                
+                <div class="submit-btn">
+                    <button class="update-btn" type="submit">Add Discharge</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>

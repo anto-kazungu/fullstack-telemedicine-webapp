@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Discharges</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
+    <body>
+        <% 
+            content = `
+                <h1>Discharges</h1>
+                <div class="add-btn">
+                    <a type="button" href="/discharges/add">Add New Discharge</a>
+                </div>
+                <table border="1">
+                    <tr>
+                        <th>Discharge ID</th>
+                        <th>Admission ID</th>
+                        <th>Patient ID</th>
+                        <th>Discharge Date</th>
+                        <th>Discharge Disposition</th>
+                    </tr>
+        
+                    ${results.map(discharge => `
+                        <tr>
+                            <td>${discharge.discharges_id}</td>
+                            <td>${discharge.admission_id}</td>
+                            <td>${discharge.patient_id}</td>
+                            <td>${discharge.discharge_date}</td>
+                            <td>${discharge.discharge_disposition}</td>
+                            <td>
+                                <a href="/discharges/edit/${discharge.discharges_id}" class="edit-btn">Edit</a>
+                                <form action="/discharges/delete/${discharge.discharges_id}" method="POST" style="display:inline;">
+                                    <button type="submit" class="delete-btn">Delete</button>
+                                </form>
+                            </td>
+                        </tr>
+                    `).join('')}
+                </table>
+            `;
+        %>
+        <%- include('../layout') %>
+    </body>
+</html>

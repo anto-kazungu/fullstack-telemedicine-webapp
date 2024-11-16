@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Add Visit</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/forms.css">
+    </head>
+    <body>
+        <div class="form-row">
+            <h1>Add New Visit</h1>
+            <form action="/visits" method="POST">
+
+                <div class="input-data">
+                    <input type="text" name="patient_id" required placeholder="Patient ID"><br>
+                </div>
+
+                <div class="input-data">
+                    <input type="text" name="provider_id" required placeholder="Provider ID"><br>
+                </div>
+
+                <div class="input-data">
+                    <label for="date_of_visit">Date of Visit:</label>
+                    <input type="date" name="date_of_visit" required><br>
+                </div>
+
+                <div class="input-data">
+                    <label for="date_scheduled">Date Scheduled:</label>
+                    <input type="date" name="date_scheduled" required><br>
+                </div>
+
+                <div class="input-data">
+                    <input type="text" name="visit_department_id" required placeholder="Visit Department ID"><br>
+                </div>
+
+                <div class="input-data">
+                    <input type="text" name="visit_type" required placeholder="Visit Type"><br>
+                </div>
+
+                <div class="input-data">
+                    <input type="text" name="blood_pressure_systolic" required placeholder="Blood Pressure (Systolic)"><br>
+                </div>
+
+                <div class="input-data">
+                    <input type="text" name="blood_pressure_diastolic" required placeholder="Blood Pressure (Diastolic)"><br>
+                </div>
+
+                <div class="input-data">
+                    <input type="text" name="pulse" required placeholder="Pulse"><br>
+                </div>
+
+                <div class="input-data">
+                    <input type="text" name="visit_status" required placeholder="Visit Status"><br>
+                </div>
+                
+                <div class="submit-btn">
+                    <button class="update-btn" type="submit">Add Visit</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
